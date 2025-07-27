@@ -1,6 +1,12 @@
 import React from "react";
-import { Hero } from "./components/Hero/Hero";
-import { Story } from "./components/Story/Story";
+import {
+  Hero,
+  Story,
+  ImageGallery,
+  Memories,
+  Proposal,
+  Contact,
+} from "./components";
 import "./styles/globals.css";
 import "./styles/animations.css";
 import "./App.css";
@@ -10,6 +16,10 @@ function App() {
     <div className="app">
       <Hero />
       <Story />
+      <ImageGallery />
+      <Memories />
+      <Proposal />
+      <Contact />
     </div>
   );
 }

@@ -102,8 +102,10 @@ export const useStaggerAnimation = <T extends HTMLElement = HTMLElement>(
   return { isVisible };
 };
 
-export const useParallaxEffect = (speed: number = 0.5) => {
-  const elementRef = useRef<HTMLElement>(null);
+export const useParallaxEffect = <T extends HTMLElement = HTMLElement>(
+  speed: number = 0.5
+) => {
+  const elementRef = useRef<T>(null);
 
   useEffect(() => {
     const element = elementRef.current;
