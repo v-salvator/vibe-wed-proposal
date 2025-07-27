@@ -30,7 +30,7 @@ export const weddingImages: ImageData[] = [
   // First meeting (2-3 images)
   {
     id: 1,
-    src: generatePlaceholderImage(800, 600, "First Meeting", 1),
+    src: "/images/_M4A7640.jpg",
     alt: "Our first meeting - the beginning of our story",
     caption: "Where it all began...",
     category: "first-meeting",
@@ -38,17 +38,17 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 2,
-    src: generatePlaceholderImage(600, 800, "First Coffee", 2),
+    src: "/images/_M4A7576.jpg",
     alt: "Our first coffee date",
     caption: "That first coffee that changed everything",
     category: "first-meeting",
-    aspectRatio: "portrait",
+    aspectRatio: "landscape",
   },
 
   // Dating milestones (3-4 images)
   {
     id: 3,
-    src: generatePlaceholderImage(800, 600, "First Date", 3),
+    src: "/images/_M4A7468.jpg",
     alt: "Our first official date",
     caption: "The night I knew you were special",
     category: "dating-milestones",
@@ -56,15 +56,15 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 4,
-    src: generatePlaceholderImage(600, 800, "Movie Night", 4),
+    src: "/images/_M4A7367.jpg",
     alt: "Our first movie together",
     caption: "Sharing popcorn and dreams",
     category: "dating-milestones",
-    aspectRatio: "portrait",
+    aspectRatio: "landscape",
   },
   {
     id: 5,
-    src: generatePlaceholderImage(800, 600, "Dinner Date", 5),
+    src: "/images/_M4A7333.jpg",
     alt: "Fancy dinner date",
     caption: "Dressed up and falling in love",
     category: "dating-milestones",
@@ -74,7 +74,7 @@ export const weddingImages: ImageData[] = [
   // Travel adventures (3-4 images)
   {
     id: 6,
-    src: generatePlaceholderImage(800, 600, "Beach Trip", 6),
+    src: "/images/_M4A7312.jpg",
     alt: "Our first beach vacation together",
     caption: "Sun, sand, and us",
     category: "travel-adventures",
@@ -82,15 +82,15 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 7,
-    src: generatePlaceholderImage(600, 800, "Mountain Hike", 7),
+    src: "/images/_M4A7308.jpg",
     alt: "Hiking in the mountains",
     caption: "Reaching new heights together",
     category: "travel-adventures",
-    aspectRatio: "portrait",
+    aspectRatio: "landscape",
   },
   {
     id: 8,
-    src: generatePlaceholderImage(800, 600, "City Break", 8),
+    src: "/images/_M4A7291.jpg",
     alt: "Exploring a new city",
     caption: "Getting lost in new places with you",
     category: "travel-adventures",
@@ -100,15 +100,15 @@ export const weddingImages: ImageData[] = [
   // Special moments (3-4 images)
   {
     id: 9,
-    src: generatePlaceholderImage(600, 800, "Birthday Surprise", 9),
+    src: "/images/_M4A7268.jpg",
     alt: "Birthday celebration",
     caption: "Making every birthday special",
     category: "special-moments",
-    aspectRatio: "portrait",
+    aspectRatio: "landscape",
   },
   {
     id: 10,
-    src: generatePlaceholderImage(800, 600, "Holiday Together", 10),
+    src: "/images/_M4A7166.jpg",
     alt: "Holiday celebration",
     caption: "Creating traditions together",
     category: "special-moments",
@@ -116,17 +116,17 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 11,
-    src: generatePlaceholderImage(600, 800, "Anniversary", 11),
+    src: "/images/_M4A7146.jpg",
     alt: "Anniversary celebration",
     caption: "Another year of love and laughter",
     category: "special-moments",
-    aspectRatio: "portrait",
+    aspectRatio: "landscape",
   },
 
   // Recent memories (2-3 images)
   {
     id: 12,
-    src: generatePlaceholderImage(800, 600, "Recent Adventure", 12),
+    src: "/images/_M4A7062.jpg",
     alt: "Recent adventure together",
     caption: "Still discovering new things about each other",
     category: "recent-memories",
@@ -134,17 +134,17 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 13,
-    src: generatePlaceholderImage(600, 800, "Quiet Moment", 13),
+    src: "/images/_M4A7028.jpg",
     alt: "Quiet moment together",
     caption: "The simple moments are the best",
     category: "recent-memories",
-    aspectRatio: "portrait",
+    aspectRatio: "landscape",
   },
 
   // Proposal preparation (1-2 images)
   {
     id: 14,
-    src: generatePlaceholderImage(800, 600, "Planning", 14),
+    src: "/images/_M4A6982.jpg",
     alt: "Planning the perfect proposal",
     caption: "Every detail matters",
     category: "proposal-preparation",
@@ -152,51 +152,9 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 15,
-    src: generatePlaceholderImage(600, 800, "Ring Selection", 15),
+    src: "/images/_M4A6886.jpg",
     alt: "Choosing the perfect ring",
     caption: "Finding the symbol of our forever",
-    category: "proposal-preparation",
-    aspectRatio: "portrait",
-  },
-
-  // Additional memories (5 more to reach 20)
-  {
-    id: 16,
-    src: generatePlaceholderImage(800, 600, "Concert Night", 16),
-    alt: "Concert night together",
-    caption: "Dancing to our favorite songs",
-    category: "special-moments",
-    aspectRatio: "landscape",
-  },
-  {
-    id: 17,
-    src: generatePlaceholderImage(600, 800, "Cooking Together", 17),
-    alt: "Cooking dinner together",
-    caption: "Learning to cook, learning to love",
-    category: "recent-memories",
-    aspectRatio: "portrait",
-  },
-  {
-    id: 18,
-    src: generatePlaceholderImage(800, 600, "Weekend Getaway", 18),
-    alt: "Weekend getaway",
-    caption: "Escaping reality with you",
-    category: "travel-adventures",
-    aspectRatio: "landscape",
-  },
-  {
-    id: 19,
-    src: generatePlaceholderImage(600, 800, "Game Night", 19),
-    alt: "Game night with friends",
-    caption: "Building memories with our loved ones",
-    category: "special-moments",
-    aspectRatio: "portrait",
-  },
-  {
-    id: 20,
-    src: generatePlaceholderImage(800, 600, "Future Dreams", 20),
-    alt: "Dreaming of our future",
-    caption: "Ready to write the next chapter",
     category: "proposal-preparation",
     aspectRatio: "landscape",
   },
