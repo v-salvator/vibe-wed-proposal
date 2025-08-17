@@ -1,7 +1,6 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useScrollAnimation } from "../../hooks/useScrollAnimation";
-import { useParallaxEffect } from "../../hooks/useScrollAnimation";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { weddingImages } from "../../utils/imagePlaceholders";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "./Memories.css";
@@ -91,52 +90,71 @@ const memoryQuotes: MemoryQuote[] = [
 ];
 
 export const Memories: React.FC = () => {
-  const { elementRef: titleRef } = useScrollAnimation<HTMLHeadingElement>({
-    animationType: "fade-in",
-    threshold: 0.3,
-  });
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
 
-  const { elementRef: subtitleRef } = useScrollAnimation<HTMLParagraphElement>({
-    animationType: "fade-in",
-    threshold: 0.3,
-    rootMargin: "0px 0px -100px 0px",
-  });
+  const container = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.15 },
+    },
+  };
 
-  const { elementRef: masonryRef } = useScrollAnimation<HTMLDivElement>({
-    animationType: "fade-in",
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  });
+  const item = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+  };
 
-  const { elementRef: parallaxRef } = useParallaxEffect<HTMLDivElement>(0.3);
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
 
   return (
     <section id="memories-section" className="memories section">
       <div className="container">
         <div className="memories-header text-center">
-          <h2 ref={titleRef} className="memories-title scroll-animate">
+          <motion.h2
+            className="memories-title"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             Precious Moments
-          </h2>
+          </motion.h2>
 
-          <p ref={subtitleRef} className="memories-subtitle scroll-animate">
+          <motion.p
+            className="memories-subtitle"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -100px 0px" }}
+          >
             These memories are the foundation of our love story, each one a
             treasure we'll cherish forever.
-          </p>
+          </motion.p>
         </div>
 
-        <div ref={masonryRef} className="memories-masonry scroll-animate">
+        <motion.div
+          className="memories-masonry"
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2, margin: "0px 0px -50px 0px" }}
+        >
           {weddingImages.map((image, index) => {
             const quote = memoryQuotes[index % memoryQuotes.length];
             const isLarge = index % 4 === 0;
             const isMedium = index % 4 === 1;
 
             return (
-              <div
+              <motion.div
                 key={image.id}
                 className={`memory-item memory-item-${
                   isLarge ? "large" : isMedium ? "medium" : "small"
                 } hover-scale`}
-                style={{ animationDelay: `${index * 150}ms` }}
+                variants={item}
               >
                 <div className="memory-image-container">
                   <LazyLoadImage
@@ -163,19 +181,19 @@ export const Memories: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
-        <div ref={parallaxRef} className="memories-parallax">
+        <motion.div className="memories-parallax" style={{ y }}>
           <div className="memories-quote-large">
             <blockquote className="memories-quote-large-text">
               "Love is composed of a single soul inhabiting two bodies."
             </blockquote>
             <cite className="memories-quote-large-author">— Aristotle</cite>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
