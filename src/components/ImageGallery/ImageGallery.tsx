@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useScrollAnimation } from "../../hooks/useScrollAnimation";
-import { useStaggerAnimation } from "../../hooks/useScrollAnimation";
+import { motion } from "framer-motion";
 import { weddingImages, type ImageData } from "../../utils/imagePlaceholders";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "./ImageGallery.css";
@@ -10,24 +9,22 @@ export const ImageGallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
-  const { elementRef: titleRef } = useScrollAnimation<HTMLHeadingElement>({
-    animationType: "fade-in",
-    threshold: 0.3,
-  });
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
 
-  const { elementRef: subtitleRef } = useScrollAnimation<HTMLParagraphElement>({
-    animationType: "fade-in",
-    threshold: 0.3,
-    rootMargin: "0px 0px -100px 0px",
-  });
+  const container = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.1 },
+    },
+  };
 
-  const { elementRef: galleryRef } = useScrollAnimation<HTMLDivElement>({
-    animationType: "fade-in",
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  });
-
-  useStaggerAnimation(galleryRef, ".gallery-item", 100);
+  const item = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
+  };
 
   const openLightbox = (image: ImageData) => {
     setSelectedImage(image);
@@ -51,22 +48,40 @@ export const ImageGallery: React.FC = () => {
     <section id="gallery-section" className="gallery section">
       <div className="container">
         <div className="gallery-header text-center">
-          <h2 ref={titleRef} className="gallery-title scroll-animate">
+          <motion.h2
+            className="gallery-title"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             Our Memories
-          </h2>
+          </motion.h2>
 
-          <p ref={subtitleRef} className="gallery-subtitle scroll-animate">
+          <motion.p
+            className="gallery-subtitle"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -100px 0px" }}
+          >
             Every picture tells a story of love, laughter, and unforgettable
             moments together.
-          </p>
+          </motion.p>
         </div>
 
-        <div ref={galleryRef} className="gallery-grid scroll-animate">
-          {weddingImages.map((image, index) => (
-            <div
+        <motion.div
+          className="gallery-grid"
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2, margin: "0px 0px -50px 0px" }}
+        >
+          {weddingImages.map((image) => (
+            <motion.div
               key={image.id}
               className={`gallery-item gallery-item-${image.aspectRatio} hover-scale`}
-              style={{ animationDelay: `${index * 100}ms` }}
+              variants={item}
               onClick={() => openLightbox(image)}
             >
               <div className="gallery-image-container">
@@ -99,9 +114,9 @@ export const ImageGallery: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Lightbox */}
