@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion } from "framer-motion";
 import { weddingImages, type ImageData } from "../../utils/imagePlaceholders";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import "./ImageGallery.css";
 
 export const ImageGallery: React.FC = () => {
@@ -85,12 +83,10 @@ export const ImageGallery: React.FC = () => {
               onClick={() => openLightbox(image)}
             >
               <div className="gallery-image-container">
-                <LazyLoadImage
+                <img
                   src={image.src}
                   alt={image.alt}
-                  effect="blur"
                   className="gallery-image"
-                  placeholderSrc={image.src}
                 />
                 <div className="gallery-overlay">
                   <div className="gallery-caption">

@@ -1,8 +1,6 @@
 import React from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { weddingImages } from "../../utils/imagePlaceholders";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import "./Memories.css";
 
 interface MemoryQuote {
@@ -157,12 +155,10 @@ export const Memories: React.FC = () => {
                 variants={item}
               >
                 <div className="memory-image-container">
-                  <LazyLoadImage
+                  <img
                     src={image.src}
                     alt={image.alt}
-                    effect="blur"
                     className="memory-image"
-                    placeholderSrc={image.src}
                   />
                   <div className="memory-overlay">
                     <div className="memory-quote">

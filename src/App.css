@@ -38,3 +38,38 @@ html {
     var(--color-accent-pink)
   );
 }
+
+/* Global Loader */
+.global-loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  z-index: 9999;
+  backdrop-filter: blur(2px);
+}
+
+.global-loader__spinner {
+  width: 56px;
+  height: 56px;
+  border: 6px solid var(--color-primary-cream);
+  border-top-color: var(--color-accent-pink);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.global-loader__text {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-dark);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
