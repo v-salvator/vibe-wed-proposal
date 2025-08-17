@@ -1,49 +1,31 @@
-import React, { useEffect, useRef } from "react";
-import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import React from "react";
+import { motion } from "framer-motion";
 import "./Hero.css";
 
 export const Hero: React.FC = () => {
-  const { elementRef: titleRef } = useScrollAnimation({
-    animationType: "fade-in",
-    threshold: 0.3,
-  });
-
-  const { elementRef: subtitleRef } = useScrollAnimation({
-    animationType: "fade-in",
-    threshold: 0.3,
-    rootMargin: "0px 0px -100px 0px",
-  });
-
-  const { elementRef: buttonRef } = useScrollAnimation({
-    animationType: "scale-in",
-    threshold: 0.3,
-    rootMargin: "0px 0px -150px 0px",
-  });
-
-  const { elementRef: scrollIndicatorRef } = useScrollAnimation({
-    animationType: "fade-in",
-    threshold: 0.3,
-    rootMargin: "0px 0px -200px 0px",
-  });
-
-  const scrollIndicatorRef2 = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Add bounce animation to scroll indicator after a delay
-    const timer = setTimeout(() => {
-      if (scrollIndicatorRef2.current) {
-        scrollIndicatorRef2.current.classList.add("animate-bounce");
-      }
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   const scrollToNextSection = () => {
     const nextSection = document.getElementById("story-section");
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8 },
+    },
+  };
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.6 },
+    },
   };
 
   return (
@@ -55,31 +37,61 @@ export const Hero: React.FC = () => {
 
       <div className="container">
         <div className="hero-content text-center">
-          <h1 ref={titleRef} className="hero-title scroll-animate">
+          <motion.h1
+            className="hero-title"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             Will You Marry Me?
-          </h1>
+          </motion.h1>
 
-          <p ref={subtitleRef} className="hero-subtitle scroll-animate">
+          <motion.p
+            className="hero-subtitle"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -100px 0px" }}
+          >
             Every moment with you has been a dream come true. Now I want to make
             it official and spend forever with you.
-          </p>
+          </motion.p>
 
-          <div ref={buttonRef} className="hero-actions scroll-animate-scale">
+          <motion.div
+            className="hero-actions"
+            variants={scaleIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -150px 0px" }}
+          >
             <button
               className="btn btn-primary hover-lift"
               onClick={scrollToNextSection}
             >
               Our Story
             </button>
-          </div>
+          </motion.div>
         </div>
       </div>
 
-      <div ref={scrollIndicatorRef} className="scroll-indicator scroll-animate">
-        <div
-          ref={scrollIndicatorRef2}
+      <motion.div
+        className="scroll-indicator"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3, margin: "0px 0px -200px 0px" }}
+      >
+        <motion.div
           className="scroll-arrow"
           onClick={scrollToNextSection}
+          initial={{ y: 0 }}
+          animate={{ y: [0, -12, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            delay: 2,
+          }}
         >
           <svg
             width="24"
@@ -92,8 +104,8 @@ export const Hero: React.FC = () => {
             <path d="M7 13l5 5 5-5" />
             <path d="M7 6l5 5 5-5" />
           </svg>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
