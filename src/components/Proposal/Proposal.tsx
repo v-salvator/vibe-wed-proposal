@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Proposal.css";
 
@@ -7,22 +6,10 @@ export const Proposal: React.FC = () => {
   const [showRing, setShowRing] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
 
-  const { elementRef: titleRef } = useScrollAnimation<HTMLHeadingElement>({
-    animationType: "fade-in",
-    threshold: 0.3,
-  });
-
-  const { elementRef: subtitleRef } = useScrollAnimation<HTMLParagraphElement>({
-    animationType: "fade-in",
-    threshold: 0.3,
-    rootMargin: "0px 0px -100px 0px",
-  });
-
-  const { elementRef: ringRef } = useScrollAnimation<HTMLDivElement>({
-    animationType: "scale-in",
-    threshold: 0.5,
-    rootMargin: "0px 0px -150px 0px",
-  });
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -61,18 +48,33 @@ export const Proposal: React.FC = () => {
 
       <div className="container">
         <div className="proposal-content text-center">
-          <h1 ref={titleRef} className="proposal-title scroll-animate">
+          <motion.h1
+            className="proposal-title"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             Will You Marry Me?
-          </h1>
+          </motion.h1>
 
-          <p ref={subtitleRef} className="proposal-subtitle scroll-animate">
+          <motion.p
+            className="proposal-subtitle"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -100px 0px" }}
+          >
             Every day with you has been a gift, and I want to spend the rest of
             my life unwrapping that gift with you.
-          </p>
+          </motion.p>
 
-          <div
-            ref={ringRef}
-            className="proposal-ring-container scroll-animate-scale"
+          <motion.div
+            className="proposal-ring-container"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5, margin: "0px 0px -150px 0px" }}
           >
             <AnimatePresence>
               {showRing && (
@@ -95,7 +97,7 @@ export const Proposal: React.FC = () => {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
 
           <div className="proposal-actions">
             <motion.button
@@ -148,7 +150,6 @@ export const Proposal: React.FC = () => {
                 transition={{
                   duration: Math.random() * 3 + 2,
                   repeat: Infinity,
-                  ease: "linear",
                 }}
               />
             ))}

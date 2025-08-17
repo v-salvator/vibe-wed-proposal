@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import { motion } from "framer-motion";
 import "./Contact.css";
 import { AnimatePresence } from "framer-motion";
@@ -21,22 +20,10 @@ export const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const { elementRef: titleRef } = useScrollAnimation<HTMLHeadingElement>({
-    animationType: "fade-in",
-    threshold: 0.3,
-  });
-
-  const { elementRef: subtitleRef } = useScrollAnimation<HTMLParagraphElement>({
-    animationType: "fade-in",
-    threshold: 0.3,
-    rootMargin: "0px 0px -100px 0px",
-  });
-
-  const { elementRef: formRef } = useScrollAnimation<HTMLFormElement>({
-    animationType: "fade-in",
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  });
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -81,24 +68,36 @@ export const Contact: React.FC = () => {
     <section id="contact-section" className="contact section">
       <div className="container">
         <div className="contact-header text-center">
-          <h2 ref={titleRef} className="contact-title scroll-animate">
+          <motion.h2
+            className="contact-title"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             Share Your Thoughts
-          </h2>
+          </motion.h2>
 
-          <p ref={subtitleRef} className="contact-subtitle scroll-animate">
+          <motion.p
+            className="contact-subtitle"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -100px 0px" }}
+          >
             I'd love to hear what you think about this proposal. Your response
             means the world to me.
-          </p>
+          </motion.p>
         </div>
 
         <div className="contact-content">
           <motion.form
-            ref={formRef}
-            className="contact-form scroll-animate"
+            className="contact-form"
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            viewport={{ once: true, amount: 0.2, margin: "0px 0px -50px 0px" }}
           >
             <div className="form-group">
               <label htmlFor="name" className="form-label">
