@@ -1,6 +1,5 @@
 import React from "react";
-import { useScrollAnimation } from "../../hooks/useScrollAnimation";
-import { useStaggerAnimation } from "../../hooks/useScrollAnimation";
+import { motion } from "framer-motion";
 import "./Story.css";
 
 interface TimelineItem {
@@ -79,49 +78,68 @@ const timelineData: TimelineItem[] = [
 ];
 
 export const Story: React.FC = () => {
-  const { elementRef: titleRef } = useScrollAnimation<HTMLHeadingElement>({
-    animationType: "fade-in",
-    threshold: 0.3,
-  });
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
 
-  const { elementRef: subtitleRef } = useScrollAnimation<HTMLParagraphElement>({
-    animationType: "fade-in",
-    threshold: 0.3,
-    rootMargin: "0px 0px -100px 0px",
-  });
+  const container = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.2 },
+    },
+  };
 
-  const { elementRef: timelineRef } = useScrollAnimation<HTMLDivElement>({
-    animationType: "fade-in",
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  });
+  const fromLeft = {
+    hidden: { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+  };
 
-  useStaggerAnimation(timelineRef, ".timeline-item", 200);
+  const fromRight = {
+    hidden: { opacity: 0, x: 30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+  };
 
   return (
     <section id="story-section" className="story section">
       <div className="container">
         <div className="story-header text-center">
-          <h2 ref={titleRef} className="story-title scroll-animate">
+          <motion.h2
+            className="story-title"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             Our Love Story
-          </h2>
+          </motion.h2>
 
-          <p ref={subtitleRef} className="story-subtitle scroll-animate">
+          <motion.p
+            className="story-subtitle"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -100px 0px" }}
+          >
             Every moment with you has been a chapter in the most beautiful story
             ever written.
-          </p>
+          </motion.p>
         </div>
 
-        <div ref={timelineRef} className="timeline-container scroll-animate">
+        <motion.div
+          className="timeline-container"
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2, margin: "0px 0px -50px 0px" }}
+        >
           <div className="timeline-line"></div>
 
-          {timelineData.map((item, index) => (
-            <div
+          {timelineData.map((item) => (
+            <motion.div
               key={item.id}
-              className={`timeline-item timeline-item-${
-                item.side
-              } scroll-animate-${item.side === "left" ? "left" : "right"}`}
-              style={{ animationDelay: `${index * 200}ms` }}
+              className={`timeline-item timeline-item-${item.side}`}
+              variants={item.side === "left" ? fromLeft : fromRight}
             >
               <div className="timeline-marker">
                 <div className="timeline-dot"></div>
@@ -132,9 +150,9 @@ export const Story: React.FC = () => {
                 <h3 className="timeline-title">{item.title}</h3>
                 <p className="timeline-description">{item.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
