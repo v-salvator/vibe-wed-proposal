@@ -99,6 +99,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 120px;
 }
 
 .proposal-ring {
@@ -296,6 +297,10 @@
     font-size: var(--font-size-lg);
   }
 
+  .proposal-ring-container {
+    min-height: 100px;
+  }
+
   .proposal-ring {
     width: 100px;
     height: 100px;
@@ -339,6 +344,10 @@
 
   .proposal-message-text {
     font-size: var(--font-size-base);
+  }
+
+  .proposal-ring-container {
+    min-height: 80px;
   }
 
   .proposal-ring {

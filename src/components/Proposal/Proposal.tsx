@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Proposal.css";
 
 export const Proposal: React.FC = () => {
   const [showRing, setShowRing] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const ringContainerRef = useRef<HTMLDivElement | null>(null);
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -12,21 +13,66 @@ export const Proposal: React.FC = () => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowRing(true);
-    }, 1000);
+    if (showRing) return;
 
-    return () => clearTimeout(timer);
-  }, []);
+    const element = ringContainerRef.current;
+    if (!element) return;
 
-  useEffect(() => {
-    if (showRing) {
-      const confettiTimer = setTimeout(() => {
-        setShowConfetti(true);
-      }, 500);
+    let cleanup: (() => void) | undefined;
 
-      return () => clearTimeout(confettiTimer);
+    if (typeof IntersectionObserver !== "undefined") {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              setShowRing(true);
+              observer.disconnect();
+              break;
+            }
+          }
+        },
+        {
+          root: null,
+          // Create a center band: when element overlaps the middle ~20% of viewport
+          // top and bottom margins shrink the root area to the center band
+          rootMargin: "-40% 0px -40% 0px",
+          threshold: 0,
+        }
+      );
+
+      observer.observe(element);
+      cleanup = () => observer.disconnect();
+    } else {
+      const handleScroll = () => {
+        if (!ringContainerRef.current || showRing) return;
+        const rect = ringContainerRef.current.getBoundingClientRect();
+        const viewportCenterY = window.innerHeight / 2;
+        const elementCenterY = rect.top + rect.height / 2;
+        const distanceToCenter = Math.abs(elementCenterY - viewportCenterY);
+        const viewportBand = window.innerHeight * 0.2;
+        const sizeBand = rect.height * 0.5;
+        const threshold = Math.max(80, viewportBand, sizeBand);
+        const isCentered = distanceToCenter <= threshold;
+        if (isCentered) {
+          setShowRing(true);
+          window.removeEventListener("scroll", handleScroll);
+          window.removeEventListener("resize", handleScroll);
+        }
+      };
+
+      handleScroll();
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      window.addEventListener("resize", handleScroll);
+
+      cleanup = () => {
+        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("resize", handleScroll);
+      };
     }
+
+    return () => {
+      if (cleanup) cleanup();
+    };
   }, [showRing]);
 
   const handleYesClick = () => {
@@ -70,6 +116,7 @@ export const Proposal: React.FC = () => {
           </motion.p>
 
           <motion.div
+            ref={ringContainerRef}
             className="proposal-ring-container"
             variants={fadeInUp}
             initial="hidden"
