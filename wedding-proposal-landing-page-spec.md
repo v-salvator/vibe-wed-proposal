@@ -9,7 +9,7 @@ A modern, cutting-edge landing page for a wedding proposal featuring scroll-trig
 - **Framework**: React 19.1.0 with TypeScript
 - **Build Tool**: Vite 7.0.4
 - **Styling**: CSS Modules or Styled Components
-- **Animations**: Framer Motion or Intersection Observer API
+- **Animations**: Framer Motion (viewport triggers and useScroll/useTransform for parallax)
 - **Image Optimization**: Lazy loading with placeholder support
 
 ## Design Requirements
@@ -107,10 +107,9 @@ A modern, cutting-edge landing page for a wedding proposal featuring scroll-trig
 
 ### Scroll Animations
 
-- **Trigger**: Intersection Observer API
-- **Threshold**: 0.1 (10% of element visible)
-- **Duration**: 0.8s for main elements, 0.4s for secondary elements
-- **Easing**: cubic-bezier(0.4, 0, 0.2, 1)
+- **Trigger**: Framer Motion viewport (once per element); `viewport.amount` ~ 0.2–0.3 with negative bottom margins to pre-trigger
+- **Duration**: 0.8s for main elements, 0.4–0.6s for secondary elements
+- **Easing/Transitions**: Framer Motion defaults (ease-out/spring where relevant); adjustable per variant
 
 ### Specific Animation Types
 
@@ -194,15 +193,11 @@ src/
 │   ├── Memories/
 │   ├── Proposal/
 │   └── Contact/
-├── hooks/
-│   ├── useScrollAnimation.ts
-│   └── useIntersectionObserver.ts
 ├── styles/
 │   ├── globals.css
 │   └── animations.css
 ├── utils/
-│   ├── imagePlaceholders.ts
-│   └── animationHelpers.ts
+│   └── imagePlaceholders.ts
 └── assets/
     └── images/
         └── placeholders/
@@ -212,9 +207,8 @@ src/
 
 ```json
 {
-  "framer-motion": "^10.16.4",
-  "react-intersection-observer": "^9.5.2",
-  "react-lazy-load-image-component": "^1.6.0"
+  "framer-motion": "^12.23.9",
+  "react-lazy-load-image-component": "^1.6.3"
 }
 ```
 
