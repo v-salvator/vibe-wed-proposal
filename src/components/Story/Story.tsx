@@ -13,67 +13,90 @@ interface TimelineItem {
 const timelineData: TimelineItem[] = [
   {
     id: 1,
-    date: "January 2023",
+    date: "July 2018",
     title: "First Meeting",
     description:
-      "We met at that coffee shop downtown. I still remember the way you smiled when I accidentally spilled my coffee.",
+      "We met at the Taptot office. I still remember you said something about sundried noodles.",
     side: "left",
   },
   {
     id: 2,
-    date: "February 2023",
-    title: "First Date",
-    description:
-      "Our first official date at that Italian restaurant. You wore that beautiful red dress that made my heart skip a beat.",
+    date: "September 2018",
+    title: "Relationship Started",
+    description: "We started dating. And I am so shy afraid to hold your hand.",
     side: "right",
   },
   {
     id: 3,
-    date: "March 2023",
-    title: "Movie Night",
+    date: "November 2022",
+    title: "Travel in Paris",
     description:
-      "We watched that romantic comedy and shared popcorn. I knew then that you were someone special.",
+      "We traveled to Paris together for the first time. The Versailles, the Louvre, the Museums were amazing, the appetizers and desserts were delicious and we had a great time Seine River Cruise.",
     side: "left",
   },
   {
     id: 4,
-    date: "June 2023",
-    title: "Beach Vacation",
+    date: "January 2023",
+    title: "Travel in Okinawa",
     description:
-      "Our first trip together to the beach. Building sandcastles and watching the sunset together.",
+      "We traveled to Okinawa with your family for the first time. . The barbeque was amazing, the beaches, the stalactites caves, the aquarium were beautiful.",
+    side: "right",
+  },
+  {
+    id: 4,
+    date: "June 2023",
+    title: "Bought our first house",
+    description:
+      "Our first time to survey the house and we bought our first house. ",
+    side: "left",
+  },
+  {
+    id: 5,
+    date: "February 2024",
+    title: "Travel in Busan",
+    description:
+      "We traveled to Busan together for the first time. The View was amazing, the desserts so delicious and we had a lot of fun playing cart racing.",
     side: "right",
   },
   {
     id: 5,
-    date: "September 2023",
-    title: "Birthday Surprise",
+    date: "February 2024",
+    title: "We Sold our first house and bought our second house",
     description:
-      "Planning your surprise birthday party was one of the most exciting things I've ever done.",
+      "We sold our first house and bought our second house. So lucky to upgrade our house so soon.",
     side: "left",
   },
   {
     id: 6,
-    date: "December 2023",
-    title: "Holiday Together",
+    date: "February 2024",
+    title: "Travel in Tokyo",
     description:
-      "Spending the holidays with your family made me realize how much I want to be part of your life forever.",
+      "We traveled to Tokyo togetherfor the first time. We played snowboarding and ate a lot of delicious food and had a lot of fun.",
     side: "right",
   },
   {
     id: 7,
-    date: "March 2024",
-    title: "Moving In",
+    date: "January 2025",
+    title: "Travel in Philippines",
     description:
-      "Taking the big step of moving in together. Every day feels like a new adventure with you.",
+      "We traveled to Philippines. Had the best lemonade in the Hotel and had a lot of fun sailing to see the dolphins and swimming in the ocean.",
     side: "left",
   },
   {
     id: 8,
+    date: "March 2025",
+    title: "Travel in Budapest and Viena",
+    description:
+      "We traveled to Budapest for the first time. Though we stuck on the bridge for a long time but it was a beautiful city and we had a lot of fun.",
+    side: "right",
+  },
+  {
+    id: 9,
     date: "Now",
     title: "The Proposal",
     description:
       "And now, here we are. Ready to take the biggest step of all and start our forever together.",
-    side: "right",
+    side: "left",
   },
 ];
 

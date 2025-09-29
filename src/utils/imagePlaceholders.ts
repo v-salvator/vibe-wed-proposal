@@ -30,7 +30,7 @@ export const weddingImages: ImageData[] = [
   // First meeting (2-3 images)
   {
     id: 1,
-    src: "/images/_M4A7640-min.jpg",
+    src: "/images/wedding/_M4A7640-min.jpg",
     alt: "Our first meeting - the beginning of our story",
     caption: "Where it all began...",
     category: "first-meeting",
@@ -38,7 +38,7 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 2,
-    src: "/images/_M4A7576-min.jpg",
+    src: "/images/wedding/_M4A7576-min.jpg",
     alt: "Our first coffee date",
     caption: "That first coffee that changed everything",
     category: "first-meeting",
@@ -48,7 +48,7 @@ export const weddingImages: ImageData[] = [
   // Dating milestones (3-4 images)
   {
     id: 3,
-    src: "/images/_M4A7468-min.jpg",
+    src: "/images/wedding/_M4A7468-min.jpg",
     alt: "Our first official date",
     caption: "The night I knew you were special",
     category: "dating-milestones",
@@ -56,7 +56,7 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 4,
-    src: "/images/_M4A7367-min.jpg",
+    src: "/images/wedding/_M4A7367-min.jpg",
     alt: "Our first movie together",
     caption: "Sharing popcorn and dreams",
     category: "dating-milestones",
@@ -64,7 +64,7 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 5,
-    src: "/images/_M4A7333-min.jpg",
+    src: "/images/wedding/_M4A7333-min.jpg",
     alt: "Fancy dinner date",
     caption: "Dressed up and falling in love",
     category: "dating-milestones",
@@ -74,7 +74,7 @@ export const weddingImages: ImageData[] = [
   // Travel adventures (3-4 images)
   {
     id: 6,
-    src: "/images/_M4A7312-min.jpg",
+    src: "/images/wedding/_M4A7312-min.jpg",
     alt: "Our first beach vacation together",
     caption: "Sun, sand, and us",
     category: "travel-adventures",
@@ -82,7 +82,7 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 7,
-    src: "/images/_M4A7308-min.jpg",
+    src: "/images/wedding/_M4A7308-min.jpg",
     alt: "Hiking in the mountains",
     caption: "Reaching new heights together",
     category: "travel-adventures",
@@ -90,7 +90,7 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 8,
-    src: "/images/_M4A7291-min.jpg",
+    src: "/images/wedding/_M4A7291-min.jpg",
     alt: "Exploring a new city",
     caption: "Getting lost in new places with you",
     category: "travel-adventures",
@@ -100,7 +100,7 @@ export const weddingImages: ImageData[] = [
   // Special moments (3-4 images)
   {
     id: 9,
-    src: "/images/_M4A7268-min.jpg",
+    src: "/images/wedding/_M4A7268-min.jpg",
     alt: "Birthday celebration",
     caption: "Making every birthday special",
     category: "special-moments",
@@ -108,7 +108,7 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 10,
-    src: "/images/_M4A7166-min.jpg",
+    src: "/images/wedding/_M4A7166-min.jpg",
     alt: "Holiday celebration",
     caption: "Creating traditions together",
     category: "special-moments",
@@ -116,7 +116,7 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 11,
-    src: "/images/_M4A7146-min.jpg",
+    src: "/images/wedding/_M4A7146-min.jpg",
     alt: "Anniversary celebration",
     caption: "Another year of love and laughter",
     category: "special-moments",
@@ -126,7 +126,7 @@ export const weddingImages: ImageData[] = [
   // Recent memories (2-3 images)
   {
     id: 12,
-    src: "/images/_M4A7062-min.jpg",
+    src: "/images/wedding/_M4A7062-min.jpg",
     alt: "Recent adventure together",
     caption: "Still discovering new things about each other",
     category: "recent-memories",
@@ -134,7 +134,7 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 13,
-    src: "/images/_M4A7028-min.jpg",
+    src: "/images/wedding/_M4A7028-min.jpg",
     alt: "Quiet moment together",
     caption: "The simple moments are the best",
     category: "recent-memories",
@@ -144,7 +144,7 @@ export const weddingImages: ImageData[] = [
   // Proposal preparation (1-2 images)
   {
     id: 14,
-    src: "/images/_M4A6982-min.jpg",
+    src: "/images/wedding/_M4A6982-min.jpg",
     alt: "Planning the perfect proposal",
     caption: "Every detail matters",
     category: "proposal-preparation",
@@ -152,7 +152,7 @@ export const weddingImages: ImageData[] = [
   },
   {
     id: 15,
-    src: "/images/_M4A6886-min.jpg",
+    src: "/images/wedding/_M4A6886-min.jpg",
     alt: "Choosing the perfect ring",
     caption: "Finding the symbol of our forever",
     category: "proposal-preparation",
