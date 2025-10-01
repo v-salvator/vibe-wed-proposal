@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { motion, type Variants } from "framer-motion";
-import { weddingImages } from "../../utils/imagePlaceholders";
+import { memoriesImages } from "../../utils/imagePlaceholders";
 import "./Memories.css";
 
 interface MemoryQuote {
@@ -88,7 +88,7 @@ const memoryQuotes: MemoryQuote[] = [
 ];
 
 type MemoryItemProps = {
-  image: (typeof weddingImages)[number];
+  image: (typeof memoriesImages)[number];
   index: number;
   variants: Variants;
 };
@@ -196,7 +196,7 @@ export const Memories: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2, margin: "0px 0px -50px 0px" }}
         >
-          {weddingImages.map((image, index) => (
+          {memoriesImages.map((image, index) => (
             <MemoryItem
               key={image.id}
               image={image}
