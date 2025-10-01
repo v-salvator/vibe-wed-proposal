@@ -96,8 +96,9 @@ type MemoryItemProps = {
 const MemoryItem: React.FC<MemoryItemProps> = React.memo(
   ({ image, index, variants }) => {
     const quote = memoryQuotes[index % memoryQuotes.length];
-    const isLarge = index % 4 === 0;
-    const isMedium = index % 4 === 1;
+    // const isLarge = index % 4 === 0;
+    const isLarge = index % 8 === 0;
+    const isMedium = index % 8 === 5 || index % 8 === 6 || index % 8 === 7;
 
     return (
       <motion.div
@@ -111,9 +112,9 @@ const MemoryItem: React.FC<MemoryItemProps> = React.memo(
             src={image.src}
             alt={image.alt}
             className="memory-image"
-            loading={index < 6 ? "eager" : "lazy"}
+            loading={index < 10 ? "eager" : "lazy"}
             decoding="async"
-            fetchPriority={index < 6 ? "high" : "low"}
+            fetchPriority={index < 10 ? "high" : "low"}
             draggable={false}
           />
           <div className="memory-overlay">
@@ -158,7 +159,7 @@ export const Memories: React.FC = () => {
   const item: Variants = useMemo(
     () => ({
       hidden: { opacity: 0, scale: 0.9 },
-      visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+      visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
     }),
     []
   );
