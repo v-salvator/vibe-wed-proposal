@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { weddingImages, type ImageData } from "../../utils/imagePlaceholders";
+import { memoriesImages, type ImageData } from "../../utils/imagePlaceholders";
 import "./ImageGallery.css";
 
 type GalleryItemProps = {
@@ -139,7 +139,7 @@ export const ImageGallery: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2, margin: "0px 0px -50px 0px" }}
         >
-          {weddingImages.map((image, index) => (
+          {memoriesImages.map((image, index) => (
             <GalleryItem
               key={image.id}
               image={image}
