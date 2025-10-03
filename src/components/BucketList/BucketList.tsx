@@ -18,77 +18,75 @@ interface FloatingHeart {
 }
 
 const ADVENTURES: Adventure[] = [
-  // Travel Adventures
+  // Adventures
   {
     id: "hokkaido-japan",
     title: "Snowboarding in Hokkaido",
     emoji: "🏂",
-    category: "Travel",
+    category: "Adventures",
     description: "Explore snowboarding in Hokkaido",
   },
   {
     id: "ancient-egypt",
     title: "Watch sunrise over Ancient Egypt",
     emoji: "▵",
-    category: "Travel",
+    category: "Adventures",
     description: "Ancient wonder and breathtaking views in Egypt",
   },
   {
     id: "japan-maple",
     title: "Visit Japan during maple season",
     emoji: "🍁",
-    category: "Travel",
+    category: "Adventures",
     description: "Romantic walks under golden petals",
   },
   {
     id: "hawaii-island",
     title: "Visit Hawaii together",
     emoji: "🏝️",
-    category: "Travel",
+    category: "Adventures",
     description: "Fire torches, blue seas, and endless sunsets",
   },
   {
     id: "roaming-italy",
     title: "Roaming Italy",
     emoji: "🇮🇹",
-    category: "Travel",
+    category: "Adventures",
     description: "Witness museums and artifacts in Italy",
   },
-
-  // Life Experiences
   {
     id: "dance-lessons",
     title: "Learn to dance together",
     emoji: "🎭",
-    category: "Experiences",
+    category: "Adventures",
     description: "Party Jam, let's dance together",
   },
   {
     id: "cooking-classes",
     title: "Take cooking classes",
     emoji: "🍳",
-    category: "Experiences",
+    category: "Adventures",
     description: "Master cooking together",
   },
   {
     id: "paint-together",
     title: "Paint a picture together",
     emoji: "🎨",
-    category: "Experiences",
+    category: "Adventures",
     description: "Create art that tells our story",
   },
   {
     id: "dream-home",
     title: "Build our dream home",
     emoji: "🏠",
-    category: "Experiences",
+    category: "Adventures",
     description: "Every corner filled with love and memories",
   },
   {
     id: "new-business",
     title: "scale up our business",
     emoji: "💰",
-    category: "Experiences",
+    category: "Adventures",
     description: "Scale up our business together",
   },
 ];
