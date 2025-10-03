@@ -23,10 +23,11 @@ const GalleryItem: React.FC<GalleryItemProps> = React.memo(
             src={image.src}
             alt={image.alt}
             className="gallery-image"
-            loading={index < 4 ? "eager" : "lazy"}
+            loading={index < 6 ? "eager" : "lazy"}
             decoding="async"
-            fetchPriority={index < 4 ? "high" : "low"}
+            fetchPriority={index < 6 ? "high" : "auto"}
             draggable={false}
+            style={{ display: "block", width: "100%", height: "100%" }}
           />
           <div className="gallery-overlay">
             <div className="gallery-caption">

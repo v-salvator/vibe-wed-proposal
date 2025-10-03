@@ -51,7 +51,6 @@
     box-shadow var(--transition-normal);
   aspect-ratio: 1;
   will-change: transform;
-  content-visibility: auto;
 }
 
 .gallery-item-landscape {
@@ -66,14 +65,35 @@
   aspect-ratio: 1;
 }
 
+/* Fallback for browsers that don't support aspect-ratio */
+@supports not (aspect-ratio: 1) {
+  .gallery-item {
+    padding-bottom: 100%;
+  }
+
+  .gallery-item-landscape {
+    padding-bottom: 75%;
+  }
+
+  .gallery-item-portrait {
+    padding-bottom: 133.33%;
+  }
+
+  .gallery-item-square {
+    padding-bottom: 100%;
+  }
+}
+
 .gallery-image-container {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  min-height: 150px;
 }
 
 .gallery-image {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -81,6 +101,9 @@
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+  /* Ensure images are visible */
+  opacity: 1;
+  visibility: visible;
 }
 
 .gallery-overlay {
@@ -267,8 +290,35 @@
     font-size: var(--font-size-sm);
   }
 
+  .gallery-item {
+    /* Ensure items are visible on mobile */
+    min-height: 150px;
+  }
+
+  .gallery-image-container {
+    /* Prevent collapsed containers on mobile */
+    min-height: 150px;
+  }
+
+  .gallery-image {
+    /* Better image rendering on mobile */
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
   .gallery-overlay {
     padding: var(--spacing-md);
+    /* Show overlay on mobile tap/touch */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Show overlay on mobile touch */
+  .gallery-item:active .gallery-overlay {
+    opacity: 1;
   }
 
   .gallery-caption-title {
@@ -300,6 +350,15 @@
 
   .gallery-title {
     font-size: var(--font-size-xl);
+  }
+
+  .gallery-item {
+    /* Larger min-height for single column on very small screens */
+    min-height: 200px;
+  }
+
+  .gallery-image-container {
+    min-height: 200px;
   }
 
   .lightbox-overlay {
