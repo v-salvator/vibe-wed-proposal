@@ -5,7 +5,7 @@ import {
   ImageGallery,
   Memories,
   Proposal,
-  Contact,
+  BucketList,
 } from "./components";
 import "./styles/globals.css";
 import "./styles/animations.css";
@@ -76,7 +76,7 @@ function App() {
         <ImageGallery />
         <Memories />
         <Proposal />
-        <Contact />
+        <BucketList />
       </div>
     </>
   );
