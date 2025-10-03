@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useMemo } from "react";
+import { motion, type Variants } from "framer-motion";
 import { weddingImages } from "../../utils/imagePlaceholders";
 import "./Memories.css";
 
@@ -89,66 +90,108 @@ const memoryQuotes: MemoryQuote[] = [
 type MemoryItemProps = {
   image: (typeof weddingImages)[number];
   index: number;
+  variants: Variants;
 };
 
-const MemoryItem: React.FC<MemoryItemProps> = React.memo(({ image, index }) => {
-  const quote = memoryQuotes[index % memoryQuotes.length];
-  // const isLarge = index % 4 === 0;
-  const isLarge = index % 8 === 0;
-  const isMedium = index % 8 === 5 || index % 8 === 6 || index % 8 === 7;
+const MemoryItem: React.FC<MemoryItemProps> = React.memo(
+  ({ image, index, variants }) => {
+    const quote = memoryQuotes[index % memoryQuotes.length];
+    // const isLarge = index % 4 === 0;
+    const isLarge = index % 8 === 0;
+    const isMedium = index % 8 === 5 || index % 8 === 6 || index % 8 === 7;
 
-  return (
-    <div
-      className={`memory-item memory-item-${
-        isLarge ? "large" : isMedium ? "medium" : "small"
-      }`}
-    >
-      <div className="memory-image-container">
-        <img
-          src={image.src}
-          alt={image.alt}
-          className="memory-image"
-          // loading="lazy"
-          // decoding="async"
-          draggable={false}
-        />
-        <div className="memory-overlay">
-          <div className="memory-quote">
-            <blockquote className="memory-quote-text">
-              "{quote.text}"
-            </blockquote>
-            <cite className="memory-quote-author">— {quote.author}</cite>
-          </div>
-          <div className="memory-caption">
-            <h3 className="memory-caption-title">{image.caption}</h3>
-            <p className="memory-caption-category">
-              {image.category.replace("-", " ")}
-            </p>
+    return (
+      <motion.div
+        className={`memory-item memory-item-${
+          isLarge ? "large" : isMedium ? "medium" : "small"
+        }`}
+        variants={variants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
+      >
+        <div className="memory-image-container">
+          <img
+            src={image.src}
+            alt={image.alt}
+            className="memory-image"
+            // loading="lazy"
+            // decoding="async"
+            draggable={false}
+          />
+          <div className="memory-overlay">
+            <div className="memory-quote">
+              <blockquote className="memory-quote-text">
+                "{quote.text}"
+              </blockquote>
+              <cite className="memory-quote-author">— {quote.author}</cite>
+            </div>
+            <div className="memory-caption">
+              <h3 className="memory-caption-title">{image.caption}</h3>
+              <p className="memory-caption-category">
+                {image.category.replace("-", " ")}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-});
+      </motion.div>
+    );
+  }
+);
 
 MemoryItem.displayName = "MemoryItem";
 
 export const Memories: React.FC = () => {
+  const fadeInUp: Variants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 30 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+    }),
+    []
+  );
+
+  const item: Variants = useMemo(
+    () => ({
+      hidden: { opacity: 0, scale: 0.9 },
+      visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+    }),
+    []
+  );
+
   return (
     <section id="memories-section" className="memories section">
       <div className="container">
         <div className="memories-header text-center">
-          <h2 className="memories-title">Precious Moments</h2>
+          <motion.h2
+            className="memories-title"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            Precious Moments
+          </motion.h2>
 
-          <p className="memories-subtitle">
+          <motion.p
+            className="memories-subtitle"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -100px 0px" }}
+          >
             These memories are the foundation of our love story, each one a
             treasure we'll cherish forever.
-          </p>
+          </motion.p>
         </div>
 
         <div className="memories-masonry">
           {weddingImages.map((image, index) => (
-            <MemoryItem key={image.id} image={image} index={index} />
+            <MemoryItem
+              key={image.id}
+              image={image}
+              index={index}
+              variants={item}
+            />
           ))}
         </div>
 

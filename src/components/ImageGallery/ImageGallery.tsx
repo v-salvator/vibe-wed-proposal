@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
+import { motion, type Variants } from "framer-motion";
 import { memoriesImages, type ImageData } from "../../utils/imagePlaceholders";
 import "./ImageGallery.css";
 
@@ -6,17 +7,22 @@ type GalleryItemProps = {
   image: ImageData;
   index: number;
   onOpen: (image: ImageData) => void;
+  variants: Variants;
 };
 
 const GalleryItem: React.FC<GalleryItemProps> = React.memo(
-  ({ image, onOpen }) => {
+  ({ image, onOpen, variants }) => {
     const handleClick = useCallback(() => {
       onOpen(image);
     }, [image, onOpen]);
 
     return (
-      <div
+      <motion.div
         className={`gallery-item gallery-item-${image.aspectRatio}`}
+        variants={variants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         onClick={handleClick}
       >
         <div className="gallery-image-container">
@@ -51,7 +57,7 @@ const GalleryItem: React.FC<GalleryItemProps> = React.memo(
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 );
@@ -61,6 +67,22 @@ GalleryItem.displayName = "GalleryItem";
 export const ImageGallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  const fadeInUp: Variants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 30 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+    }),
+    []
+  );
+
+  const item: Variants = useMemo(
+    () => ({
+      hidden: { opacity: 0, scale: 0.9 },
+      visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
+    }),
+    []
+  );
 
   const openLightbox = useCallback((image: ImageData) => {
     setSelectedImage(image);
@@ -87,12 +109,26 @@ export const ImageGallery: React.FC = () => {
     <section id="gallery-section" className="gallery section">
       <div className="container">
         <div className="gallery-header text-center">
-          <h2 className="gallery-title">Our Memories</h2>
+          <motion.h2
+            className="gallery-title"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            Our Memories
+          </motion.h2>
 
-          <p className="gallery-subtitle">
+          <motion.p
+            className="gallery-subtitle"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -100px 0px" }}
+          >
             Every picture tells a story of love, laughter, and unforgettable
             moments together.
-          </p>
+          </motion.p>
         </div>
 
         <div className="gallery-grid">
@@ -102,6 +138,7 @@ export const ImageGallery: React.FC = () => {
               image={image}
               index={index}
               onOpen={openLightbox}
+              variants={item}
             />
           ))}
         </div>
