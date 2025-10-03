@@ -259,7 +259,7 @@
 
   .memory-item-small {
     grid-column: span 2;
-    grid-row: span 1;
+    grid-row: span 1.5;
   }
 
   .memories-title {
@@ -308,6 +308,7 @@
 
   .memory-item-small {
     grid-column: span 2;
+    grid-row: span 2;
   }
 
   .memories-title {
