@@ -50,6 +50,11 @@ function App() {
     }
   }, [isLoading]);
 
+  // Reset scroll position to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {isLoading && (

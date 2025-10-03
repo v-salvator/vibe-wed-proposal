@@ -1,5 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
-import { motion, type Variants } from "framer-motion";
+import React, { useCallback, useState } from "react";
 import { memoriesImages, type ImageData } from "../../utils/imagePlaceholders";
 import "./ImageGallery.css";
 
@@ -7,25 +6,27 @@ type GalleryItemProps = {
   image: ImageData;
   index: number;
   onOpen: (image: ImageData) => void;
-  variants: Variants;
 };
 
 const GalleryItem: React.FC<GalleryItemProps> = React.memo(
-  ({ image, index, onOpen, variants }) => {
+  ({ image, index, onOpen }) => {
+    const handleClick = useCallback(() => {
+      onOpen(image);
+    }, [image, onOpen]);
+
     return (
-      <motion.div
+      <div
         className={`gallery-item gallery-item-${image.aspectRatio}`}
-        variants={variants}
-        onClick={() => onOpen(image)}
+        onClick={handleClick}
       >
         <div className="gallery-image-container">
           <img
             src={image.src}
             alt={image.alt}
             className="gallery-image"
-            loading={index < 6 ? "eager" : "lazy"}
-            decoding="async"
-            fetchPriority={index < 6 ? "high" : "auto"}
+            // loading="eager"
+            // decoding="async"
+            // fetchPriority={index < 6 ? "high" : "auto"}
             draggable={false}
             style={{ display: "block", width: "100%", height: "100%" }}
           />
@@ -51,40 +52,16 @@ const GalleryItem: React.FC<GalleryItemProps> = React.memo(
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     );
   }
 );
 
+GalleryItem.displayName = "GalleryItem";
+
 export const ImageGallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-
-  const fadeInUp: Variants = useMemo(
-    () => ({
-      hidden: { opacity: 0, y: 30 },
-      visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-    }),
-    []
-  );
-
-  const container: Variants = useMemo(
-    () => ({
-      hidden: {},
-      visible: {
-        transition: { staggerChildren: 0.1 },
-      },
-    }),
-    []
-  );
-
-  const item: Variants = useMemo(
-    () => ({
-      hidden: { opacity: 0, scale: 0.9 },
-      visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-    }),
-    []
-  );
 
   const openLightbox = useCallback((image: ImageData) => {
     setSelectedImage(image);
@@ -111,45 +88,24 @@ export const ImageGallery: React.FC = () => {
     <section id="gallery-section" className="gallery section">
       <div className="container">
         <div className="gallery-header text-center">
-          <motion.h2
-            className="gallery-title"
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            Our Memories
-          </motion.h2>
+          <h2 className="gallery-title">Our Memories</h2>
 
-          <motion.p
-            className="gallery-subtitle"
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3, margin: "0px 0px -100px 0px" }}
-          >
+          <p className="gallery-subtitle">
             Every picture tells a story of love, laughter, and unforgettable
             moments together.
-          </motion.p>
+          </p>
         </div>
 
-        <motion.div
-          className="gallery-grid"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2, margin: "0px 0px -50px 0px" }}
-        >
+        <div className="gallery-grid">
           {memoriesImages.map((image, index) => (
             <GalleryItem
               key={image.id}
               image={image}
               index={index}
               onOpen={openLightbox}
-              variants={item}
             />
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {lightboxOpen && selectedImage && (
@@ -182,9 +138,9 @@ export const ImageGallery: React.FC = () => {
                 src={selectedImage.src}
                 alt={selectedImage.alt}
                 className="lightbox-image"
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
+                // loading="eager"
+                // decoding="async"
+                // fetchPriority="high"
                 draggable={false}
               />
             </div>
