@@ -108,9 +108,8 @@ const MemoryItem: React.FC<MemoryItemProps> = React.memo(({ image, index }) => {
           src={image.src}
           alt={image.alt}
           className="memory-image"
-          // loading="eager"
+          // loading="lazy"
           // decoding="async"
-          // fetchPriority={index < 10 ? "high" : "auto"}
           draggable={false}
         />
         <div className="memory-overlay">

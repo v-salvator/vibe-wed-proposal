@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Image optimization
+public/images-optimized
+public/images-backup
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

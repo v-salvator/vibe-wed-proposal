@@ -5,3 +5,4 @@ export { Memories } from "./Memories/Memories";
 export { Proposal } from "./Proposal/Proposal";
 export { Contact } from "./Contact/Contact";
 export { BucketList } from "./BucketList/BucketList";
+export { OptimizedImage } from "./OptimizedImage/OptimizedImage";

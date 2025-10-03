@@ -24,9 +24,8 @@ const GalleryItem: React.FC<GalleryItemProps> = React.memo(
             src={image.src}
             alt={image.alt}
             className="gallery-image"
-            // loading="eager"
+            // loading="lazy"
             // decoding="async"
-            // fetchPriority={index < 6 ? "high" : "auto"}
             draggable={false}
             style={{ display: "block", width: "100%", height: "100%" }}
           />
@@ -140,7 +139,6 @@ export const ImageGallery: React.FC = () => {
                 className="lightbox-image"
                 // loading="eager"
                 // decoding="async"
-                // fetchPriority="high"
                 draggable={false}
               />
             </div>
