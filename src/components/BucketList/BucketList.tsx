@@ -297,17 +297,17 @@ export const BucketList: React.FC = () => {
                 <AnimatePresence>
                   {selectedAdventureObjects.map((adventure) => (
                     <motion.div
-                      key={adventure.id}
+                      key={adventure?.id}
                       className="selected-adventure-item"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       layout
                     >
-                      <span className="selected-emoji">{adventure.emoji}</span>
-                      <span className="selected-name">{adventure.title}</span>
+                      <span className="selected-emoji">{adventure?.emoji}</span>
+                      <span className="selected-name">{adventure?.title}</span>
                       <motion.button
-                        onClick={() => toggleAdventure(adventure.id)}
+                        onClick={() => toggleAdventure(adventure?.id ?? "")}
                         className="remove-btn"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}

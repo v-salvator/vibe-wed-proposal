@@ -9,7 +9,7 @@ type GalleryItemProps = {
 };
 
 const GalleryItem: React.FC<GalleryItemProps> = React.memo(
-  ({ image, index, onOpen }) => {
+  ({ image, onOpen }) => {
     const handleClick = useCallback(() => {
       onOpen(image);
     }, [image, onOpen]);
