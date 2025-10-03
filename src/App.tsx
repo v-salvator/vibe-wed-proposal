@@ -50,10 +50,17 @@ function App() {
     }
   }, [isLoading]);
 
-  // Reset scroll position to top on page load
+  // Reset scroll position to top after loading is complete
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (!isLoading) {
+      // Use setTimeout to ensure DOM is fully rendered
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        // Also reset document element scroll position for better browser compatibility
+        document.documentElement.scrollTop = 0;
+      }, 0);
+    }
+  }, [isLoading]);
 
   return (
     <>
