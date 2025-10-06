@@ -71,14 +71,34 @@ function App() {
           aria-live="polite"
           aria-label="Loading images"
         >
-          <div className="global-loader__spinner" />
-          <div className="global-loader__text">
-            Loading memories...{" "}
-            {Math.min(
-              Math.round((loadedCount / Math.max(totalImages, 1)) * 100),
-              100
-            )}
-            %
+          <div className="global-loader__floating-hearts"></div>
+          <div className="global-loader__container">
+            <div className="global-loader__heart"></div>
+            <div className="global-loader__spinner"></div>
+            <div className="global-loader__text">
+              Preparing our beautiful memories...
+            </div>
+            <div className="global-loader__percentage">
+              {Math.min(
+                Math.round((loadedCount / Math.max(totalImages, 1)) * 100),
+                100
+              )}
+              %
+            </div>
+            <div className="global-loader__progress">
+              <div
+                className="global-loader__progress-bar"
+                style={{
+                  width: `${Math.min(
+                    (loadedCount / Math.max(totalImages, 1)) * 100,
+                    100
+                  )}%`,
+                }}
+              />
+            </div>
+            <div className="global-loader__subtext">
+              Loading {loadedCount} of {totalImages} precious moments
+            </div>
           </div>
         </div>
       )}
