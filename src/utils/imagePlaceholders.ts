@@ -31,7 +31,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 1,
     src: "/images/memories/paris/IMG_0555.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Paris under our feet",
     caption: "First trip abroad...",
     category: "Paris",
     aspectRatio: "landscape",
@@ -47,7 +47,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 3,
     src: "/images/memories/paris/IMG_1192.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Fisish shooting in Paris",
     caption: "First trip abroad...",
     category: "Paris",
     aspectRatio: "landscape",
@@ -55,7 +55,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 4,
     src: "/images/memories/paris/IMG_4094.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Versailles Palace",
     caption: "First trip abroad...",
     category: "Paris",
     aspectRatio: "landscape",
@@ -63,7 +63,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 5,
     src: "/images/memories/paris/IMG_4129.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Coffee break in Paris",
     caption: "First trip abroad...",
     category: "Paris",
     aspectRatio: "landscape",
@@ -71,7 +71,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 6,
     src: "/images/memories/paris/IMG_1340.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Siene River Cruise",
     caption: "First trip abroad...",
     category: "Paris",
     aspectRatio: "landscape",
@@ -79,7 +79,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 7,
     src: "/images/memories/paris/IMG_4267.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Louvre Museum",
     caption: "First trip abroad...",
     category: "Paris",
     aspectRatio: "landscape",
@@ -87,7 +87,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 8,
     src: "/images/memories/paris/IMG_4969.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Champs-Elysées",
     caption: "First trip abroad...",
     category: "Paris",
     aspectRatio: "landscape",
@@ -95,7 +95,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 9,
     src: "/images/memories/paris/IMG_5455.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Tokyo palace",
     caption: "First trip abroad...",
     category: "Paris",
     aspectRatio: "landscape",
@@ -103,7 +103,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 10,
     src: "/images/memories/paris/IMG_2008.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Sleepy 🐷",
     caption: "First trip abroad...",
     category: "Paris",
     aspectRatio: "landscape",
@@ -112,7 +112,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 11,
     src: "/images/memories/okinawa/IMG_3178.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Amazing view in Okinawa",
     caption: "First trip with your family",
     category: "Okinawa",
     aspectRatio: "landscape",
@@ -120,7 +120,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 12,
     src: "/images/memories/okinawa/IMG_3179.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "🐷🐷🐷",
     caption: "First trip with your family",
     category: "Okinawa",
     aspectRatio: "landscape",
@@ -129,15 +129,14 @@ export const memoriesImages: ImageData[] = [
   {
     id: 13,
     src: "/images/memories/busan/IMG_4047.jpg",
-    alt: "Our first meeting - the beginning of our story",
-    caption: "Where it all began...",
+    alt: "Car race in Busan",
     category: "Busan",
     aspectRatio: "landscape",
   },
   {
     id: 14,
     src: "/images/memories/busan/IMG_4086.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "🐢🐢🐢",
     caption: "First trip to Korea",
     category: "Busan",
     aspectRatio: "landscape",
@@ -145,7 +144,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 15,
     src: "/images/memories/busan/IMG_4193.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Dog cake in Busan",
     caption: "First trip to Korea",
     category: "Busan",
     aspectRatio: "landscape",
@@ -154,7 +153,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 16,
     src: "/images/memories/japan/IMG_5015.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Preparing to cruise",
     caption: "First trip to Japan together",
     category: "Tokyo",
     aspectRatio: "landscape",
@@ -162,7 +161,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 17,
     src: "/images/memories/japan/IMG_7430.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Tokyo Garden",
     caption: "First trip to Japan together",
     category: "Tokyo",
     aspectRatio: "landscape",
@@ -171,7 +170,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 18,
     src: "/images/memories/boho/GOPR4859.JPG",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Snorkeling in Boho",
     caption: "First time snorkeling",
     category: "Boho",
     aspectRatio: "landscape",
@@ -179,7 +178,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 19,
     src: "/images/memories/boho/GOPR4889.JPG",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Under the sea",
     caption: "First time snorkeling",
     category: "Boho",
     aspectRatio: "landscape",
@@ -187,7 +186,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 20,
     src: "/images/memories/boho/GOPR4906.JPG",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Boat Riding",
     caption: "First time snorkeling",
     category: "Boho",
     aspectRatio: "landscape",
@@ -195,7 +194,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 21,
     src: "/images/memories/boho/IMG_6470.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Firefly and Canoeing",
     caption: "First time canoeing",
     category: "Boho",
     aspectRatio: "landscape",
@@ -204,7 +203,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 22,
     src: "/images/memories/budapest/IMG_6706.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Budapest Nezuko",
     caption: "First time in Budapest",
     category: "Budapest",
     aspectRatio: "landscape",
@@ -212,7 +211,7 @@ export const memoriesImages: ImageData[] = [
   {
     id: 23,
     src: "/images/memories/budapest/IMG_4816.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Fisherman's Bastion",
     caption: "First time in Budapest",
     category: "Budapest",
     aspectRatio: "landscape",
@@ -220,23 +219,23 @@ export const memoriesImages: ImageData[] = [
   {
     id: 24,
     src: "/images/memories/budapest/IMG_6813.jpg",
-    alt: "Our first meeting - the beginning of our story",
-    caption: "First time in Budapest",
+    alt: "Bonaparte franchissant le Grand-Saint-Bernard",
+    caption: "First time in Vienna",
     category: "Budapest",
     aspectRatio: "landscape",
   },
   {
     id: 25,
     src: "/images/memories/budapest/IMG_6846.jpg",
-    alt: "Our first meeting - the beginning of our story",
-    caption: "First time in Budapest",
+    alt: "Schloss Belvedere",
+    caption: "First time in Vienna",
     category: "Budapest",
     aspectRatio: "landscape",
   },
   {
     id: 26,
     src: "/images/memories/budapest/IMG_7603.jpg",
-    alt: "Our first meeting - the beginning of our story",
+    alt: "Chimney Cake",
     caption: "First time in Budapest",
     category: "Budapest",
     aspectRatio: "landscape",

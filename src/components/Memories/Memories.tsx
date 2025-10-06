@@ -126,12 +126,6 @@ const MemoryItem: React.FC<MemoryItemProps> = React.memo(
               </blockquote>
               <cite className="memory-quote-author">— {quote.author}</cite>
             </div>
-            <div className="memory-caption">
-              <h3 className="memory-caption-title">{image.caption}</h3>
-              <p className="memory-caption-category">
-                {image.category.replace("-", " ")}
-              </p>
-            </div>
           </div>
         </div>
       </motion.div>
