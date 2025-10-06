@@ -221,7 +221,7 @@ export const memoriesImages: ImageData[] = [
     src: "/images/memories/budapest/IMG_6813.jpg",
     alt: "Bonaparte franchissant le Grand-Saint-Bernard",
     caption: "First time in Vienna",
-    category: "Budapest",
+    category: "Vienna",
     aspectRatio: "landscape",
   },
   {
@@ -229,7 +229,7 @@ export const memoriesImages: ImageData[] = [
     src: "/images/memories/budapest/IMG_6846.jpg",
     alt: "Schloss Belvedere",
     caption: "First time in Vienna",
-    category: "Budapest",
+    category: "Vienna",
     aspectRatio: "landscape",
   },
   {
