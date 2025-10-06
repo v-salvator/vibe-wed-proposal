@@ -67,6 +67,7 @@ GalleryItem.displayName = "GalleryItem";
 export const ImageGallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false);
 
   const fadeInUp: Variants = useMemo(
     () => ({
@@ -87,13 +88,19 @@ export const ImageGallery: React.FC = () => {
   const openLightbox = useCallback((image: ImageData) => {
     setSelectedImage(image);
     setLightboxOpen(true);
+    setImageLoading(true);
     document.body.style.overflow = "hidden";
   }, []);
 
   const closeLightbox = useCallback(() => {
     setLightboxOpen(false);
     setSelectedImage(null);
+    setImageLoading(false);
     document.body.style.overflow = "unset";
+  }, []);
+
+  const handleImageLoad = useCallback(() => {
+    setImageLoading(false);
   }, []);
 
   const handleKeyDown = useCallback(
@@ -170,12 +177,19 @@ export const ImageGallery: React.FC = () => {
             </button>
 
             <div className="lightbox-image-container">
+              {imageLoading && (
+                <div className="lightbox-skeleton">
+                  <div className="skeleton-shimmer"></div>
+                </div>
+              )}
               <img
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                className="lightbox-image"
-                // loading="eager"
-                // decoding="async"
+                className={`lightbox-image ${
+                  imageLoading ? "loading" : "loaded"
+                }`}
+                loading="eager"
+                onLoad={handleImageLoad}
                 draggable={false}
               />
             </div>
