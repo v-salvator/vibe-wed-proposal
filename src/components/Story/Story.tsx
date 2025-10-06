@@ -85,7 +85,7 @@ const timelineData: TimelineItem[] = [
   {
     id: 8,
     date: "March 2025",
-    title: "Travel in Budapest and Viena",
+    title: "Travel in Budapest and Vienna",
     description:
       "We traveled to Budapest for the first time. Though we stuck on the bridge for a long time but it was a beautiful city and we had a lot of fun.",
     side: "right",
